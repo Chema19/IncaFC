@@ -1,0 +1,313 @@
+USE [master]
+GO
+/****** Object:  Database [IncaFCDB]    Script Date: 25/03/2022 18:55:01 ******/
+CREATE DATABASE [IncaFCDB]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'IncaFCDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\IncaFCDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'IncaFCDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\IncaFCDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [IncaFCDB] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [IncaFCDB].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [IncaFCDB] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [IncaFCDB] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [IncaFCDB] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [IncaFCDB] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [IncaFCDB] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET RECOVERY FULL 
+GO
+ALTER DATABASE [IncaFCDB] SET  MULTI_USER 
+GO
+ALTER DATABASE [IncaFCDB] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [IncaFCDB] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [IncaFCDB] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [IncaFCDB] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [IncaFCDB] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'IncaFCDB', N'ON'
+GO
+ALTER DATABASE [IncaFCDB] SET QUERY_STORE = OFF
+GO
+USE [IncaFCDB]
+GO
+/****** Object:  Table [dbo].[Categoria]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categoria](
+	[CategoriaId] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](500) NOT NULL,
+	[Estado] [varchar](3) NOT NULL,
+ CONSTRAINT [PK_Categoria] PRIMARY KEY CLUSTERED 
+(
+	[CategoriaId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cliente]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cliente](
+	[ClienteId] [int] IDENTITY(1,1) NOT NULL,
+	[Nombres] [varchar](100) NOT NULL,
+	[Estado] [varchar](3) NOT NULL,
+	[DocumentoIdentificacion] [varchar](8) NOT NULL,
+	[Celular] [varchar](9) NULL,
+ CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
+(
+	[ClienteId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Compra]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Compra](
+	[CompraId] [int] IDENTITY(1,1) NOT NULL,
+	[MontoBruto] [decimal](18, 2) NOT NULL,
+	[MontoNeto] [decimal](18, 2) NOT NULL,
+	[ImpuestoIGV] [decimal](18, 2) NOT NULL,
+	[Codigo] [varchar](20) NOT NULL,
+	[Descripcion] [varchar](500) NOT NULL,
+	[Estado] [varchar](3) NOT NULL,
+	[EstadoCompra] [varchar](3) NOT NULL,
+	[ProveedorId] [int] NOT NULL,
+ CONSTRAINT [PK_Compra] PRIMARY KEY CLUSTERED 
+(
+	[CompraId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetalleCompra]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DetalleCompra](
+	[DetalleCompraId] [int] IDENTITY(1,1) NOT NULL,
+	[CompraId] [int] NOT NULL,
+	[ProductoId] [int] NULL,
+	[Estado] [varchar](3) NOT NULL,
+	[PrecioUnitario] [decimal](18, 2) NULL,
+	[Cantidad] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_DetalleCompra] PRIMARY KEY CLUSTERED 
+(
+	[DetalleCompraId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetalleVenta]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DetalleVenta](
+	[DetalleVentaId] [int] IDENTITY(1,1) NOT NULL,
+	[VentaId] [int] NOT NULL,
+	[ProductoId] [int] NOT NULL,
+	[Estado] [varchar](3) NOT NULL,
+	[PrecioUnitario] [decimal](18, 2) NOT NULL,
+	[Cantidad] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_DetalleVenta] PRIMARY KEY CLUSTERED 
+(
+	[DetalleVentaId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Marca]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Marca](
+	[MarcaId] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](500) NOT NULL,
+	[Estado] [varchar](3) NULL,
+ CONSTRAINT [PK_Marca] PRIMARY KEY CLUSTERED 
+(
+	[MarcaId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Producto]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Producto](
+	[ProductoId] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](500) NOT NULL,
+	[MarcaId] [int] NOT NULL,
+	[CategoriaId] [int] NOT NULL,
+	[Precio] [decimal](18, 2) NOT NULL,
+	[UnidadMedidaId] [int] NOT NULL,
+	[ProveedorId] [int] NOT NULL,
+	[Estado] [varchar](3) NULL,
+ CONSTRAINT [PK_Producto] PRIMARY KEY CLUSTERED 
+(
+	[ProductoId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Proveedor]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Proveedor](
+	[ProveedorId] [int] IDENTITY(1,1) NOT NULL,
+	[Nombres] [varchar](500) NULL,
+	[Apellidos] [varchar](500) NULL,
+	[Estado] [varchar](3) NULL,
+ CONSTRAINT [PK_Proveedor] PRIMARY KEY CLUSTERED 
+(
+	[ProveedorId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UnidadMedida]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UnidadMedida](
+	[UnidadMedidaId] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NOT NULL,
+	[Unidad] [varchar](10) NOT NULL,
+	[Estado] [varchar](3) NOT NULL,
+ CONSTRAINT [PK_UnidadMedida] PRIMARY KEY CLUSTERED 
+(
+	[UnidadMedidaId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venta]    Script Date: 25/03/2022 18:55:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venta](
+	[VentaId] [int] IDENTITY(1,1) NOT NULL,
+	[MontoBruto] [nchar](10) NOT NULL,
+	[MontoNeto] [nchar](10) NOT NULL,
+	[ImpuestoIGV] [nchar](10) NOT NULL,
+	[Codigo] [nchar](10) NOT NULL,
+	[Descripcion] [nchar](10) NOT NULL,
+	[Estado] [nchar](10) NOT NULL,
+	[EstadoVenta] [nchar](10) NULL,
+	[ClienteId] [int] NOT NULL,
+ CONSTRAINT [PK_Venta] PRIMARY KEY CLUSTERED 
+(
+	[VentaId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Compra]  WITH CHECK ADD  CONSTRAINT [FK_Compra_Proveedor] FOREIGN KEY([ProveedorId])
+REFERENCES [dbo].[Proveedor] ([ProveedorId])
+GO
+ALTER TABLE [dbo].[Compra] CHECK CONSTRAINT [FK_Compra_Proveedor]
+GO
+ALTER TABLE [dbo].[DetalleCompra]  WITH CHECK ADD  CONSTRAINT [FK_DetalleCompra_Compra] FOREIGN KEY([CompraId])
+REFERENCES [dbo].[Compra] ([CompraId])
+GO
+ALTER TABLE [dbo].[DetalleCompra] CHECK CONSTRAINT [FK_DetalleCompra_Compra]
+GO
+ALTER TABLE [dbo].[DetalleCompra]  WITH CHECK ADD  CONSTRAINT [FK_DetalleCompra_Producto] FOREIGN KEY([ProductoId])
+REFERENCES [dbo].[Producto] ([ProductoId])
+GO
+ALTER TABLE [dbo].[DetalleCompra] CHECK CONSTRAINT [FK_DetalleCompra_Producto]
+GO
+ALTER TABLE [dbo].[DetalleVenta]  WITH CHECK ADD  CONSTRAINT [FK_DetalleVenta_Producto] FOREIGN KEY([ProductoId])
+REFERENCES [dbo].[Producto] ([ProductoId])
+GO
+ALTER TABLE [dbo].[DetalleVenta] CHECK CONSTRAINT [FK_DetalleVenta_Producto]
+GO
+ALTER TABLE [dbo].[DetalleVenta]  WITH CHECK ADD  CONSTRAINT [FK_DetalleVenta_Venta] FOREIGN KEY([VentaId])
+REFERENCES [dbo].[Venta] ([VentaId])
+GO
+ALTER TABLE [dbo].[DetalleVenta] CHECK CONSTRAINT [FK_DetalleVenta_Venta]
+GO
+ALTER TABLE [dbo].[Producto]  WITH CHECK ADD  CONSTRAINT [FK_Producto_Categoria] FOREIGN KEY([CategoriaId])
+REFERENCES [dbo].[Categoria] ([CategoriaId])
+GO
+ALTER TABLE [dbo].[Producto] CHECK CONSTRAINT [FK_Producto_Categoria]
+GO
+ALTER TABLE [dbo].[Producto]  WITH CHECK ADD  CONSTRAINT [FK_Producto_Marca] FOREIGN KEY([MarcaId])
+REFERENCES [dbo].[Marca] ([MarcaId])
+GO
+ALTER TABLE [dbo].[Producto] CHECK CONSTRAINT [FK_Producto_Marca]
+GO
+ALTER TABLE [dbo].[Producto]  WITH CHECK ADD  CONSTRAINT [FK_Producto_Proveedor] FOREIGN KEY([ProveedorId])
+REFERENCES [dbo].[Proveedor] ([ProveedorId])
+GO
+ALTER TABLE [dbo].[Producto] CHECK CONSTRAINT [FK_Producto_Proveedor]
+GO
+ALTER TABLE [dbo].[Producto]  WITH CHECK ADD  CONSTRAINT [FK_Producto_UnidadMedida] FOREIGN KEY([UnidadMedidaId])
+REFERENCES [dbo].[UnidadMedida] ([UnidadMedidaId])
+GO
+ALTER TABLE [dbo].[Producto] CHECK CONSTRAINT [FK_Producto_UnidadMedida]
+GO
+ALTER TABLE [dbo].[Venta]  WITH CHECK ADD  CONSTRAINT [FK_Venta_Cliente] FOREIGN KEY([ClienteId])
+REFERENCES [dbo].[Cliente] ([ClienteId])
+GO
+ALTER TABLE [dbo].[Venta] CHECK CONSTRAINT [FK_Venta_Cliente]
+GO
+USE [master]
+GO
+ALTER DATABASE [IncaFCDB] SET  READ_WRITE 
+GO
