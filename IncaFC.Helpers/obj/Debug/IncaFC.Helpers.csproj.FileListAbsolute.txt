@@ -1,0 +1,12 @@
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\IncaFC.Helpers.dll.config
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\IncaFC.Helpers.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\IncaFC.Helpers.pdb
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\obj\Debug\IncaFC.Helpers.csprojAssemblyReference.cache
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\obj\Debug\IncaFC.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\obj\Debug\IncaFC.Helpers.csproj.CopyComplete
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\obj\Debug\IncaFC.Helpers.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.Helpers\obj\Debug\IncaFC.Helpers.pdb

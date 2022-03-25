@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d9fd057fa3b540d8a53f586e7d8a9ea2" Name="Diagram1">
+        <EntityTypeShape EntityType="IncaFCDBModel.Categoria" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IncaFCDBModel.Cliente" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="IncaFCDBModel.Compra" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="IncaFCDBModel.DetalleCompra" Width="1.5" PointX="5.25" PointY="6.125" />
+        <EntityTypeShape EntityType="IncaFCDBModel.DetalleVenta" Width="1.5" PointX="5.25" PointY="2" />
+        <EntityTypeShape EntityType="IncaFCDBModel.Marca" Width="1.5" PointX="0.75" PointY="10" />
+        <EntityTypeShape EntityType="IncaFCDBModel.Producto" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="IncaFCDBModel.Proveedor" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="IncaFCDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1" />
+        <EntityTypeShape EntityType="IncaFCDBModel.UnidadMedida" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="IncaFCDBModel.Venta" Width="1.5" PointX="3" PointY="12.75" />
+        <AssociationConnector Association="IncaFCDBModel.FK_Producto_Categoria" />
+        <AssociationConnector Association="IncaFCDBModel.FK_Venta_Cliente" />
+        <AssociationConnector Association="IncaFCDBModel.FK_Compra_Proveedor" />
+        <AssociationConnector Association="IncaFCDBModel.FK_DetalleCompra_Compra" />
+        <AssociationConnector Association="IncaFCDBModel.FK_DetalleCompra_Producto" />
+        <AssociationConnector Association="IncaFCDBModel.FK_DetalleVenta_Producto" />
+        <AssociationConnector Association="IncaFCDBModel.FK_DetalleVenta_Venta" />
+        <AssociationConnector Association="IncaFCDBModel.FK_Producto_Marca" />
+        <AssociationConnector Association="IncaFCDBModel.FK_Producto_Proveedor" />
+        <AssociationConnector Association="IncaFCDBModel.FK_Producto_UnidadMedida" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

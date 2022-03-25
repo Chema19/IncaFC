@@ -1,0 +1,12 @@
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\IncaFC.DataAccess.dll.config
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\IncaFC.DataAccess.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\IncaFC.DataAccess.pdb
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\obj\Debug\IncaFC.DataAccess.csprojAssemblyReference.cache
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\obj\Debug\IncaFC.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\obj\Debug\IncaFC.DataAccess.csproj.CopyComplete
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\obj\Debug\IncaFC.DataAccess.dll
+C:\Users\USUARIO\source\repos\IncaFC.Test\IncaFC.DataAccess\obj\Debug\IncaFC.DataAccess.pdb
